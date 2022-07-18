@@ -47,4 +47,4 @@ margin_bottom = 40.0
 [node name="Label" type="Label" parent="Control"]
 margin_right = 40.0
 margin_bottom = 14.0
-text = "RFL8World a0.0001"
+text = "RFL8Land a0.0001"
