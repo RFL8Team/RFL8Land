@@ -1,44 +1,43 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
-
-[sub_resource type="CubeMesh" id=3]
-
-[sub_resource type="BoxShape" id=4]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="BoxShape" id=2]
 
-[node name="Test" type="Spatial"]
+[sub_resource type="CubeMesh" id=3]
 
-[node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 3.40637, 0 )
-script = ExtResource( 1 )
+[sub_resource type="BoxShape" id=4]
 
-[node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.559, 8.317 )
-current = true
+[node name="Test" type="Node"]
 
-[node name="RFL8Avatar" type="Spatial" parent="Player"]
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03847, 2.47533, -1.08497 )
 
-[node name="RFL8Avatar" type="MeshInstance" parent="Player/RFL8Avatar"]
+[node name="Level" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Level"]
+transform = Transform( 204.042, 0, 0, 0, 0.169427, 0, 0, 0, 182.467, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Level/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/MeshInstance/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8229, 2.28408, -0.931794 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
+[node name="RigidBody" type="RigidBody" parent="Level/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/MeshInstance2/RigidBody"]
 shape = SubResource( 4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 204.042, 0, 0, 0, 0.169427, 0, 0, 0, 182.467, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
-
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
-shape = SubResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -47,4 +46,4 @@ margin_bottom = 40.0
 [node name="Label" type="Label" parent="Control"]
 margin_right = 40.0
 margin_bottom = 14.0
-text = "RFL8Land a0.0001"
+text = "RFL8Land a0.0002"
