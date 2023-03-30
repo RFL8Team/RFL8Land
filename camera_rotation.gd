@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 var lookSensitivity : float = 15.0
 var minLookAngle : float = -75.0
@@ -6,7 +6,7 @@ var maxLookAngle : float = 75.0
 
 var mouseDelta : Vector2 = Vector2()
 
-onready var player = get_parent()
+@onready var player = get_parent()
 
 func _ready():
 

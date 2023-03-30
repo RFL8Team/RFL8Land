@@ -1,49 +1,71 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://3b7vbeu72dc1"]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Test.gd" id="1_31ays"]
+[ext_resource type="PackedScene" uid="uid://6vpxbp3ckmt4" path="res://Player.tscn" id="2_51f7a"]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="BoxMesh" id="1"]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape3D" id="2"]
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="BoxMesh" id="3"]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape3D" id="4"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1b1q0"]
+
+[sub_resource type="Sky" id="Sky_ibisd"]
+sky_material = SubResource("PhysicalSkyMaterial_1b1q0")
+
+[sub_resource type="Environment" id="Environment_451of"]
+background_mode = 2
+sky = SubResource("Sky_ibisd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7g1g"]
 
 [node name="Test" type="Node"]
+script = ExtResource("1_31ays")
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03847, 2.47533, -1.08497 )
+[node name="Level" type="Node3D" parent="."]
 
-[node name="Level" type="Spatial" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="Level"]
-transform = Transform( 204.042, 0, 0, 0, 0.169427, 0, 0, 0, 182.467, 0, 0, 0 )
-mesh = SubResource( 1 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(204.042, 0, 0, 0, 0.169427, 0, 0, 0, 182.467, 0, 0, 0)
+mesh = SubResource("1")
 skeleton = NodePath("../..")
-material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="Level/MeshInstance"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Level/MeshInstance/StaticBody"]
-shape = SubResource( 2 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D"]
+shape = SubResource("2")
 
-[node name="MeshInstance2" type="MeshInstance" parent="Level"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8229, 2.28408, -0.931794 )
-mesh = SubResource( 3 )
+[node name="MeshInstance2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8229, 2.28408, -0.931794)
+mesh = SubResource("3")
 skeleton = NodePath("../..")
-material/0 = null
 
-[node name="RigidBody" type="RigidBody" parent="Level/MeshInstance2"]
+[node name="RigidBody3D" type="RigidBody3D" parent="Level/MeshInstance2"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Level/MeshInstance2/RigidBody"]
-shape = SubResource( 4 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance2/RigidBody3D"]
+shape = SubResource("4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_451of")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level/WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.637047, 0.770825, 0, -0.770825, 0.637047, -0.572133, 6.55236, 9.02413)
+
+[node name="Player" parent="Level" instance=ExtResource("2_51f7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 6)
 
 [node name="Control" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "RFL8Land a0.0002"
+layout_mode = 1
+offset_right = 273.0
+offset_bottom = 52.0
+text = "RFL8Land a0.0004
+Press \"ESC\" to return to title screen"
+label_settings = SubResource("LabelSettings_o7g1g")

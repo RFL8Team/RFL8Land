@@ -1,0 +1,12 @@
+TextureRect
+Sprite2D
+Node3D
+Camera3D
+MeshInstance3D
+CollisionShape3D
+CharacterBody3D
+Label
+VideoStreamPlayer
+DirectionalLight3D
+DirectionalLight2D
+WorldEnvironment

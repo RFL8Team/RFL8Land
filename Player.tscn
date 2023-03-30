@@ -1,32 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://6vpxbp3ckmt4"]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://camera_move.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://Player_Script.gd" id="1_funxq"]
 
-[sub_resource type="CapsuleShape" id=1]
-radius = 0.5
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qqent"]
 
-[sub_resource type="CapsuleMesh" id=2]
-radius = 0.5
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r3nsv"]
 
-[node name="Player" type="KinematicBody"]
-script = ExtResource( 1 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j77mw"]
+albedo_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 1 )
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_78pd3"]
+material = SubResource("StandardMaterial3D_j77mw")
 
-[node name="RFL8Avatar" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_funxq")
 
-[node name="MeshInstance" type="MeshInstance" parent="RFL8Avatar"]
-mesh = SubResource( 2 )
-skeleton = NodePath("../..")
-material/0 = null
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qqent")
 
-[node name="SpringArm" type="SpringArm" parent="."]
-spring_length = 7.0
-margin = 0.2
-script = ExtResource( 2 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_r3nsv")
 
-[node name="Camera" type="Camera" parent="SpringArm"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.161549, 0, 0, 0, 0.310532, 0, 0, 0, 0.16578, 0.182628, 0.429215, -0.395912)
+mesh = SubResource("CapsuleMesh_78pd3")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.161549, 0, 0, 0, 0.310532, 0, 0, 0, 0.16578, -0.181851, 0.429215, -0.395912)
+mesh = SubResource("CapsuleMesh_78pd3")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="BaseCamera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="BaseCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.948035, 0.318165, 0, -0.318165, 0.948035, 0, 1.54382, 2.37912)
