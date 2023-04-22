@@ -1,4 +1,5 @@
 res://default_env.tres
-res://Test.tscn
 res://Player.tscn
+res://Test.tscn
 res://TitleScreen.tscn
+res://TitleScreen.gd

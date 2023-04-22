@@ -34,4 +34,4 @@ skeleton = NodePath("../MeshInstance3D")
 [node name="BaseCamera" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="BaseCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.948035, 0.318165, 0, -0.318165, 0.948035, 0, 1.54382, 2.37912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.60128)
