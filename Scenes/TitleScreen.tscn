@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bop4pthnrnjtt"]
 
 [ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_numap"]
+[ext_resource type="Texture2D" uid="uid://bfldurogqq4ab" path="res://Assets/NewLogo.png" id="2_h8syh"]
 [ext_resource type="FontFile" uid="uid://bq3lptwbrtnm8" path="res://Fonts/MonomaniacOne-Regular.ttf" id="3_2j46e"]
-[ext_resource type="Texture2D" uid="uid://dq5qd407cqdql" path="res://Assets/rfl8landlogo.png" id="3_whwdu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kuvcm"]
 font = ExtResource("3_2j46e")
@@ -29,7 +29,7 @@ offset_top = 65.0
 offset_right = 442.5
 offset_bottom = 270.0
 grow_horizontal = 2
-texture = ExtResource("3_whwdu")
+texture = ExtResource("2_h8syh")
 
 [node name="PlayLabel" type="Label" parent="."]
 layout_mode = 1

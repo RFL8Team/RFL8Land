@@ -59,6 +59,11 @@ transform = Transform3D(1, 0, 0, 0, 0.637047, 0.770825, 0, -0.770825, 0.637047, 
 [node name="Player" parent="Level" instance=ExtResource("2_51f7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 6)
 
+[node name="BaseCamera" type="Node3D" parent="Level/Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Level/Player/BaseCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.60128)
+
 [node name="Label" type="Label" parent="."]
 offset_right = 273.0
 offset_bottom = 52.0

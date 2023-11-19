@@ -1,9 +1,2 @@
-res://default_env.tres
-res://Test.tscn
-res://TitleScreen.tscn
 res://Enviroments/default_env.tres
-res://Scripts/Test.gd
-res://Scripts/TitleScreen.gd
-res://Scenes/Test.tscn
 res://Scenes/TitleScreen.tscn
-res://Scenes/SplashScreen.tscn
